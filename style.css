@@ -44,10 +44,34 @@ body{
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.title-modal h1{
+    margin: 0;
+}
+#image-modal{
+    margin: 0 auto;
+    height: 420px;
+    max-width: 280px;
+}
+.runtime-modal{
+    margin: calc(2rem - 0.14285714em) 0 1rem;
 }
 .ui.card>.image>img{
     height: 200px;
 }
 .card-body{
     height: 132px;
+}
+.ui.modal>.content>.image+.description{
+    width: inherit;
+}
+.ui.modal>.content>.image{
+    width: inherit;
+}
+@media screen and (min-width: 768px){
+    .title-modal{
+        margin-top: 2rem;
+    }
 }
