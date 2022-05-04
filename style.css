@@ -70,6 +70,21 @@ body{
 .ui.modal>.content>.image{
     width: inherit;
 }
+.genre-container{
+    width: 95%;
+    margin: 0 auto;
+}
+.genre-buttons{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.genre-buttons .ui.button{
+    display: inline-block;
+    margin: 0.5rem 0.25rem;
+}
 @media screen and (min-width: 768px){
     .title-modal{
         margin-top: 2rem;
