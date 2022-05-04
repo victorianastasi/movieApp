@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script defer src="./index.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Movie App</title>
+</head>
+<body>
+
+    <header class="ui grid center aligned ui inverted segment">
+        <div class="column four wide centered">
+            <button class="ui teal button" onclick="getMovies(API_URL)">Más populares</button>
+        </div>
+        <div class="column four wide centered">
+            <button class="ui violet button" onclick="getMovies(UPDATE_URL)">Más recientes</button>
+        </div>
+        <div class="column four wide centered">
+            <button class="ui olive button" onclick="getMovies(BEST_URL)">Mejores puntuadas</button>
+        </div>
+
+    </header>
+
+    <section class="ui container center aligned">
+        <h1>Movie App</h1>
+        <div class="ui action input">
+            <input type="text" placeholder="Buscar..." id="inputSearch">
+            <button class="ui icon button" id="button-search">
+              <i class="search icon"></i>
+            </button>
+          </div>
+    </section>
+        
+    <main class="ui centered">
+        <div id="output" class="ui centered output">
+        </div>
+        <div id="output-modal"></div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,53 @@
+body{
+    --bg-color: rgb(42, 42, 42);
+    --text-color: rgba(245,245,245);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    
+}
+.output{
+    margin: 2rem auto;
+    padding: 4rem 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./Sprinkle2.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.ui.card{
+    display: inline-block;
+    margin: 1rem 1rem;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.ui.card>.content>.header, .ui.cards>.card>.content>.header{
+    color: var(--text-color);
+}
+.meta{
+    margin-bottom: 0.75rem;
+}
+.date{
+    color: rgba(245,245,245, 0.6);
+}
+.description-text{
+    color: var(--bg-color);
+}
+.description{
+    margin: auto 0;
+}
+.title-modal{
+    color: black;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.ui.card>.image>img{
+    height: 200px;
+}
+.card-body{
+    height: 132px;
+}
