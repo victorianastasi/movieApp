@@ -5,6 +5,9 @@ body{
     color: var(--text-color);
     
 }
+.ui.relaxed.grid>.row>.column{
+    text-align: center;
+}
 .output{
     margin: 2rem auto;
     padding: 4rem 0;
@@ -12,7 +15,7 @@ body{
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    background-image: url("./Sprinkle2.svg");
+    background-image: url("./Sprinkle.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -72,7 +75,8 @@ body{
 }
 .genre-container{
     width: 95%;
-    margin: 0 auto;
+    margin: 1rem auto;
+    display: none;
 }
 .genre-buttons{
     display: flex;
@@ -85,8 +89,29 @@ body{
     display: inline-block;
     margin: 0.5rem 0.25rem;
 }
+.ui.empty.circular.label{
+    margin-right: 0.78571429rem;
+}
+.genre-container-dropdown{
+    text-align: center;
+    margin: 2rem 0 ;
+}
 @media screen and (min-width: 768px){
     .title-modal{
         margin-top: 2rem;
+    }
+}
+@media screen and (min-width: 992px){
+    .genre-container-dropdown{
+        display: none;
+    }
+    .genre-container{
+        display: block;
+        width: 85%;
+    }
+}
+@media screen and (min-width: 1400px){
+    .genre-container{
+        width: 60%;
     }
 }

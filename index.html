@@ -12,38 +12,72 @@
     <title>Movie App</title>
 </head>
 <body>
-
-    <header class="ui grid center aligned ui inverted segment">
-        <div class="column four wide centered">
-            <button class="ui teal button" onclick="getMovies(API_URL)">Más populares</button>
+    <header class="ui relaxed grid inverted segment">
+        <div class="row three column">
+            <div class="column">
+                <button class="ui teal button" onclick="getMovies(API_URL)">Más populares</button>
+            </div>
+            <div class="column">
+                <button class="ui violet button" onclick="getMovies(UPDATE_URL)">Más recientes</button>
+            </div>
+            <div class="column">
+                <button class="ui olive button" onclick="getMovies(BEST_URL)">Mejores puntuadas</button>
+            </div>
         </div>
-        <div class="column four wide centered">
-            <button class="ui violet button" onclick="getMovies(UPDATE_URL)">Más recientes</button>
-        </div>
-        <div class="column four wide centered">
-            <button class="ui olive button" onclick="getMovies(BEST_URL)">Mejores puntuadas</button>
-        </div>
+        
     </header>
 
-    <section class="genre-container">
-        <div class=" genre-buttons">
-            <button class="ui button" onclick="getMovies(createGenreUrl(28))">Acción</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(16))">Animadas</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(878))">Ciencia Ficción</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(35))">Comedia</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(80))">Crimen</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(99))">Documental</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(18))">Drama</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(14))">Fantasia</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(10402))">Musicales</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(10749))">Romance</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(53))">Suspenso</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(27))">Terror</button>
-            <button class="ui button" onclick="getMovies(createGenreUrl(37))">Western</button>
-          </div>
+    
 
+    <section class="genre-container-dropdown">
+        <div class="ui floating dropdown labeled icon button black">
+            <i class="filter icon orange"></i>
+            <span class="text">Categorías</span>
+            <div class="menu">
+                <div class="scrolling menu">
+                    <div class="ui item" onclick="getMovies(createGenreUrl(28))">
+                        <div class="ui red empty circular label"></div>Acción
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(16))">
+                        <div class="ui yellow empty circular label"></div>Animadas
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(878))">
+                        <div class="ui orange empty circular label"></div>Ciencia Ficción
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(35))">
+                        <div class="ui teal empty circular label"></div>Comedia
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(80))">
+                        <div class="ui black empty circular label"></div>Crimen
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(99))">
+                        <div class="ui olive empty circular label"></div>Documental
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(18))">
+                        <div class="ui blue empty circular label"></div>Drama
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(14))">
+                        <div class="ui violet empty circular label"></div>Fantasia
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(10402))">
+                        <div class="ui empty circular label"></div>Musicales
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(10749))">
+                        <div class="ui pink empty circular label"></div>Romance
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(53))">
+                        <div class="ui green empty circular label"></div>Suspenso
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(27))">
+                        <div class="ui violet empty circular label"></div>Terror
+                    </div>
+                    <div class="ui item" onclick="getMovies(createGenreUrl(37))">
+                        <div class="ui brown empty circular label"></div>Western
+                    </div>
+              </div>
+            </div>
+        </div>
     </section>
-
     <section class="ui container center aligned">
         <h1>Movie App</h1>
         <div class="ui action input">
@@ -53,7 +87,49 @@
             </button>
           </div>
     </section>
-        
+    <section class="genre-container">
+        <div class=" genre-buttons menu">
+            <div class="ui item button secondary small" onclick="getMovies(createGenreUrl(28))">
+                <div class="ui red empty circular label mini"></div> Acción
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(16))">
+                <div class="ui yellow empty circular label mini"></div> Animadas
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(878))">
+                <div class="ui orange empty circular label mini"></div> Ciencia Ficción
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(35))">
+                <div class="ui teal empty circular label mini"></div> Comedia
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(80))">
+                <div class="ui black empty circular label mini"></div> Crimen
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(99))">
+                <div class="ui olive empty circular label mini"></div> Documental
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(18))">
+                <div class="ui blue empty circular label mini"></div> Drama
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(14))">
+                <div class="ui violet empty circular label mini"></div> Fantasia
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(10402))">
+                <div class="ui empty circular label mini"></div> Musicales
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(10749))">
+                <div class="ui pink empty circular label mini"></div> Romance
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(53))">
+                <div class="ui green empty circular label mini"></div> Suspenso
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(27))">
+                <div class="ui violet empty circular label mini"></div> Terror
+            </div>
+            <div class="ui item button black small" onclick="getMovies(createGenreUrl(37))">
+                <div class="ui brown empty circular label mini"></div> Western
+            </div>
+        </div>
+    </section> 
     <main class="ui centered">
         <div id="output" class="ui centered output"> </div>
         <div id="modal"></div>

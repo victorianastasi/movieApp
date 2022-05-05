@@ -15,7 +15,9 @@ const UPDATE_URL = BASE_URL + '/discover/movie?primary_release_year=2022&sort_by
 
 const BEST_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KEY + LANGUAGUE_URL;
 
-
+$('.ui.dropdown')
+  .dropdown()
+;
 const createGenreUrl = (x) => {
     let GENRE_URL = BASE_URL + `/discover/movie?with_genres=${x}&` + API_KEY  + LANGUAGUE_URL;
     return GENRE_URL;
