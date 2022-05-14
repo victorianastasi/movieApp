@@ -9,35 +9,50 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+ API_KEY +
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY + LANGUAGUE_URL; 
+const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY + LANGUAGUE_URL ; 
 
 const UPDATE_URL = BASE_URL + '/discover/movie?primary_release_year=2022&sort_by=popularity.desc&' + API_KEY + LANGUAGUE_URL;
 
 const BEST_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KEY + LANGUAGUE_URL;
 
 $('.ui.dropdown')
-  .dropdown()
+    .dropdown()
 ;
+
+
 const createGenreUrl = (x) => {
     let GENRE_URL = BASE_URL + `/discover/movie?with_genres=${x}&` + API_KEY  + LANGUAGUE_URL;
     return GENRE_URL;
 }
+
+let loader =
+`
+    <div class="ui segment load-div">
+        <div class="ui active inverted dimmer load-div-box">
+            <div class="ui text loader">Cargando..</div>
+        </div>
+        <p></p>
+    </div>
+`;
 
 
 getMovies(API_URL);
 
 function getMovies(url){
     document.getElementById('output').innerHTML='';
+    document.getElementById('output').classList.remove('output-margin');
+    document.getElementById('output').innerHTML= loader;
+
     fetch(url)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        console.log(data.results[0])
+        document.getElementById('output').innerHTML = ``;
+        console.log(data.results)
         showMovies(data.results)
         showModal(data.results)
     })
+    
 }
-
 
 const showMovies = (data) => {
     let acu = '';
@@ -68,8 +83,8 @@ const showMovies = (data) => {
         `;
 
     });
-    document.getElementById('output').insertAdjacentHTML("beforeend", acu);
-    
+    document.getElementById('output').insertAdjacentHTML('beforeend', acu);
+    document.getElementById('output').classList.add('output-margin');
 }
 
 const showModal = (data) => {
@@ -86,7 +101,7 @@ const showModal = (data) => {
             
             let movieId = datos;
             
-            let htmlGenres = "";
+            let htmlGenres = '';
             movieId.genres.forEach(genre => {
                 htmlGenres += `<div class="ui left pointing teal basic label">${genre.name}</div>`;                
             })
@@ -108,9 +123,8 @@ const showModal = (data) => {
                         <div class="ui horizontal label ${getColor(movieId.vote_average)}">
                             <i class="star icon"></i> ${movieId.vote_average}
                         </div>
-                        <div class="ui header">Resumen:</div>
+                        <div class="ui header">Sinopsis:</div>
                         <p class="description-text">${movieId.overview}</p>
-                        <p class="ui header description-text">Géneros:</p>
                         <div class="list-gender">
                             ${htmlGenres}
                         </div>
@@ -133,7 +147,7 @@ const showModal = (data) => {
 
             `;
 
-            document.getElementById('modal').insertAdjacentHTML("beforeend", acuModal);
+            document.getElementById('modal').insertAdjacentHTML('beforeend', acuModal);
         })
     
     });
@@ -164,9 +178,5 @@ search.addEventListener('click', (e) => {
     }
     console.log(inputSearch.value)
 })
-
-
-
-
 
 
