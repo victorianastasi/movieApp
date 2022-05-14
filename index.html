@@ -16,7 +16,7 @@
     <title>Movie App</title>
 </head>
 <body>
-    <header class="ui relaxed grid inverted segment">
+    <header class="ui relaxed grid inverted segment" id="header">
         <div class="row three column">
             <div class="column">
                 <button class="ui teal button" onclick="getMovies(API_URL)">Más populares</button>
@@ -133,22 +133,17 @@
         </div>
     </section> 
     <main class="ui centered">
-        <div class="ui centered output-box" > 
-            <div id="output-buttons"></div>
-            <!-- <div class="output-buttons">
-                <button class="compact ui button" id="previus" onclick="substractPages(num)">Anterior</button>
-                <span class="ui compact output-buttons-num" id="number"></span>
-                <button class="compact ui button" id="next" onclick="()=>addPages(num)">Siguiente</button>
-            </div> -->
-            <!-- <div class="output-buttons">
-                <button class="compact ui button" id="previus">Anterior</button>
-                <span class="ui compact output-buttons-num" id="number"></span>
-                <button class="compact ui button" id="next">Siguiente</button>
-            </div> -->
+        <div class="ui centered output-box" >
             <div id="output" class="ui centered output"></div>
+            <div class="output-buttons" id="output-buttons">
+                <button class="compact ui button page-buttons teal" id="prev"> <i class="angle double left icon"></i></button>
+                <span class="ui compact output-buttons-num" id="number">1</span>
+                <button class="compact ui button page-buttons teal" id="next"> <i class="angle double right icon"></i></button>
+            </div>
         </div>
         <div id="modal"></div>
         <div id="output-modal"></div>
     </main>
+    <button id="btnTop" class="btnTop"><i class="big angle up icon"></i></button>
 </body>
 </html>

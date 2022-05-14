@@ -1,4 +1,3 @@
-
 const API_KEY = 'api_key=97b143511210cce0a5eb60a8b8d20279';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -19,6 +18,19 @@ $('.ui.dropdown')
     .dropdown()
 ;
 
+let btnTop = document.getElementById("btnTop");
+    
+btnTop.addEventListener('click', () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
+window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 100){
+        btnTop.classList.remove("hide");
+    }else{
+        btnTop.classList.add("hide");
+    }
+})
 
 const createGenreUrl = (x) => {
     let GENRE_URL = BASE_URL + `/discover/movie?with_genres=${x}&` + API_KEY  + LANGUAGUE_URL;
@@ -35,30 +47,75 @@ let loader =
     </div>
 `;
 
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const current = document.getElementById('number');
+
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = '';
+let totalPages = 100;
 
 getMovies(API_URL);
 
 function getMovies(url){
+    lastUrl = url;
+    document.getElementById('output-buttons').classList.add("hide");
     document.getElementById('output').innerHTML='';
     document.getElementById('output').classList.remove('output-margin');
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     document.getElementById('output').innerHTML= loader;
-
+    
     fetch(url)
     .then(res => res.json())
     .then(data => {
         document.getElementById('output').innerHTML = ``;
+        console.log(data)
         console.log(data.results)
-        showMovies(data.results)
-        showModal(data.results)
+        
+        if(data.results.length !== 0){
+            showMovies(data.results);
+            showModal(data.results);
+            document.getElementById('output-buttons').classList.remove("hide");
+            currentPage = data.page;
+            current.innerHTML = currentPage;
+            nextPage = currentPage + 1;
+            prevPage = currentPage - 1;
+            totalPages = data.total_pages;
+
+            if(currentPage <= 1){
+                prev.classList.add("disabled");
+                next.classList.remove("disabled");
+            }else if(currentPage >= totalPages){
+                prev.classList.remove("disabled");
+                next.classList.add("disabled");
+            }else{
+                prev.classList.remove("disabled");
+                next.classList.remove("disabled");
+            }
+
+        }else{
+            document.getElementById('output').innerHTML= `
+                <h3 class="no-results-title">No hay Resultados</h3>
+            `;
+            document.getElementById('output-buttons').classList.add("hide");
+        }
     })
-    
 }
 
 const showMovies = (data) => {
     let acu = '';
     data.forEach(movie => {
-        
-        let dataSplit = movie.release_date.split('-');
+        let dataSplitYear;
+        let dataSplit;
+        if(movie.release_date != undefined){
+            dataSplit = movie.release_date.split('-');
+            dataSplitYear = dataSplit[0];
+        }else{
+            dataSplitYear = "";
+        }
         
         acu += 
         `
@@ -69,7 +126,7 @@ const showMovies = (data) => {
                 <div class="content center aligned card-body">
                     <p class="header">${movie.title}</p>
                     <div class="meta">
-                        <span class="date">${dataSplit[0]}</span>
+                        <span class="date">${dataSplitYear}</span>
                     </div>
                     <div class="ui horizontal label ${getColor(movie.vote_average)}">
                         <i class="star icon"></i> ${movie.vote_average}
@@ -106,7 +163,15 @@ const showModal = (data) => {
                 htmlGenres += `<div class="ui left pointing teal basic label">${genre.name}</div>`;                
             })
 
-            let dateYear = movieId.release_date.split('-');
+            let dataDate;
+            let dataYear;
+
+            if(movieId.release_date != undefined){
+                dataDate = movieId.release_date.split('-');
+                dataYear = dataDate[0];
+            }else{
+                dataYear = "";
+            }
             acuModal += 
             `
                 <div class="ui modal" id="modal${movieId.id}">
@@ -118,7 +183,7 @@ const showModal = (data) => {
                     <div class="description">
                         <div class="title-modal">
                             <h1 class="header">${movieId.title}</h1>
-                            <div class="ui black tag label">${dateYear[0]}</div>
+                            <div class="ui black tag label">${dataYear}</div>
                         </div>
                         <div class="ui horizontal label ${getColor(movieId.vote_average)}">
                             <i class="star icon"></i> ${movieId.vote_average}
@@ -175,8 +240,33 @@ search.addEventListener('click', (e) => {
         getMovies(SEARCH_URL+'&query='+ inputSearch.value)
     }else{
         getMovies(API_URL);
+
     }
-    console.log(inputSearch.value)
 })
 
-
+next.addEventListener('click', () => {
+    if(nextPage <= totalPages){
+        pageCall(nextPage)
+    }
+})
+prev.addEventListener('click', () => {
+    if(prevPage > 0){
+        pageCall(prevPage)
+    }
+})
+const pageCall = (page) => {
+    let urlSplit = lastUrl.split('?');
+    let queryParams = urlSplit[1].split('&');
+    let key = queryParams[queryParams.length -1].split('=');
+    current.innerHTML = page;
+    if(key[0] != "page"){
+        let url = lastUrl + "&page=" + page;
+        console.log(url)
+        getMovies(url);
+    }else{
+        let newUrl = lastUrl.slice(0, (lastUrl.length-2));
+        let url = newUrl + "=" + page;
+        console.log(url)
+        getMovies(url);
+    }
+}
