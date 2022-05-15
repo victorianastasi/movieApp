@@ -81,11 +81,13 @@ window.addEventListener('load', ()=>{
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
         document.getElementById('output').innerHTML= loader;
+        document.getElementById('output-search').innerHTML= '';
         
         fetch(url)
         .then(res => res.json())
         .then(data => {
-            document.getElementById('output').innerHTML = ``;
+            document.getElementById('output').innerHTML = '';
+            
             console.log(data)
             console.log(data.results)
             
@@ -109,7 +111,7 @@ window.addEventListener('load', ()=>{
                     prev.classList.remove("disabled");
                     next.classList.remove("disabled");
                 }
-
+                
             }else{
                 document.getElementById('output').innerHTML= `
                     <h3 class="no-results-title">No hay Resultados</h3>
@@ -255,15 +257,26 @@ window.addEventListener('load', ()=>{
     let inputSearch = document.getElementById('inputSearch');
     let search = document.getElementById('button-search');
 
-    search.addEventListener('click', (e) => {
-        e.preventDefault();
+    const searchInput = () => {
         if(inputSearch.value){
-            getMovies(SEARCH_URL+'&query='+ inputSearch.value)
+            getMovies(SEARCH_URL+'&query='+ inputSearch.value);
+            document.getElementById('output-search').innerHTML= `<p class="output-search"><i class="large teal chevron circle right icon"></i> Resultados para la búsqueda "${inputSearch.value}": </p>`;
+            inputSearch.value = '';
         }else{
             getMovies(API_URL);
 
         }
+    }
+    search.addEventListener('click', (e) => {
+        e.preventDefault();
+        searchInput();
     })
+
+    inputSearch.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            searchInput();
+        }
+    });
 
     //Pagination events
     next.addEventListener('click', () => {
