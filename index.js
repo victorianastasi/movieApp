@@ -212,7 +212,7 @@ window.addEventListener('load', ()=>{
                                 ${htmlGenres}
                             </div>
                             <p class="description-text runtime-modal"><span class="ui header description-text">Duración: </span> ${movieId.runtime} minutos</p>
-                            <a class="ui labeled button" tabindex="0" href="${movieId.homepage}" target="_blank">
+                            <a class="ui labeled button" id="modal-bottom-btn" tabindex="0" href="${movieId.homepage}" target="_blank">
                                 <div class="ui pink button">
                                     <i class="heart icon"></i>
                                     <i class="tv icon"></i>

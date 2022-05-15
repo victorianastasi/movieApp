@@ -30,19 +30,20 @@
         </div>
     </header>
     
-    <section class="genre-container-dropdown">
-        <div id="genre-container-dropdown"></div>
-        <div class="ui floating dropdown labeled icon button">
-            <i class="filter icon"></i>
-            <span class="text">Categorías</span>
-            <div class="menu">
-                <div class="scrolling menu" id="genre-mobile"></div>
-            </div>
-        </div>
+    <section class="ui container center aligned main-title">
+        <h1>Movie App</h1>
     </section>
 
-    <section class="ui container center aligned">
-        <h1>Movie App</h1>
+    <section class="ui container center aligned menu-mobile">
+        <div class="genre-container-dropdown">
+            <div class="ui floating dropdown labeled icon button inverted">
+                <i class="filter icon"></i>
+                <span class="text">Categorías</span>
+                <div class="menu ">
+                    <div class="scrolling menu" id="genre-mobile"></div>
+                </div>
+            </div>
+        </div>
         <div class="ui action input">
             <input type="text" placeholder="Buscar..." id="inputSearch">
             <button class="ui icon button" id="button-search">
@@ -50,11 +51,12 @@
             </button>
           </div>
     </section>
+
     <section class="genre-container">
         <div class=" genre-buttons menu" id="genre-desktop"></div>
     </section> 
+
     <main class="ui centered">
-        
         <div class="ui centered output-box">
             <div id="output-error"></div>
             <div id="output" class="ui centered output"></div>
@@ -65,8 +67,8 @@
             </div>
         </div>
         <div id="modal"></div>
-        
     </main>
+    
     <button id="btnTop" class="btnTop hide"><i class="big angle up icon"></i></button>
 </body>
 </html>

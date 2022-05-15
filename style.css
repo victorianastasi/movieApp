@@ -30,6 +30,15 @@ body{
 .ui.relaxed.grid>.row>.column{
     text-align: center;
 }
+.main-title h1{
+    margin: 1.5rem 0;
+}
+.ui.container.menu-mobile{
+    margin: 0 auto;
+}
+.ui.dropdown .scrolling.menu, .ui.scrolling.dropdown .menu {
+    max-height: 15.28571429rem;
+}
 .output-box{
     background-image: url("./img/Sprinkle.svg");
     background-repeat: repeat;
@@ -53,8 +62,8 @@ body{
     padding: 0.5rem 0;
 }
 .output-margin{
-    margin: 2rem auto;
-    padding: 4rem 0 0 0;
+    margin: 0 auto 1rem auto;
+    padding: 2rem 0 0 0;
 }
 .ui.segment.load-div{
     width: 100%;
@@ -108,6 +117,9 @@ body{
     height: 420px;
     max-width: 280px;
 }
+#modal-bottom-btn{
+    box-shadow: 5px 5px 5px rgb(169, 168, 168) !important;
+}
 .runtime-modal{
     margin: calc(2rem - 0.14285714em) 0 1rem;
 }
@@ -148,6 +160,7 @@ body{
 .genre-container-dropdown{
     text-align: center;
     margin: 2rem 0 ;
+    display: inline;
 }
 .ui.button.page-buttons{
     margin: 0;
