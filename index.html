@@ -16,15 +16,15 @@
     <title>Movie App</title>
 </head>
 <body>
-    <header class="ui relaxed grid inverted segment" id="header">
-        <div class="row three column">
-            <div class="column">
+    <header>
+        <div class="header">
+            <div>
                 <button class="ui teal button" id="popular">Más populares</button>
             </div>
-            <div class="column">
+            <div>
                 <button class="ui violet button" id="reciente">Más recientes</button>
             </div>
-            <div class="column">
+            <div>
                 <button class="ui olive button" id="mejor">Mejores puntuadas</button>
             </div>
         </div>
@@ -34,7 +34,7 @@
         <h1>Movie App</h1>
     </section>
 
-    <section class="ui container center aligned menu-mobile">
+    <section class="menu-mobile">
         <div class="genre-container-dropdown">
             <div class="ui floating dropdown labeled icon button inverted">
                 <i class="filter icon"></i>
@@ -44,12 +44,14 @@
                 </div>
             </div>
         </div>
-        <div class="ui action input">
-            <input type="text" placeholder="Buscar..." id="inputSearch">
-            <button class="ui icon button" id="button-search">
-              <i class="search icon"></i>
-            </button>
-          </div>
+        <div class="search-container">
+            <div class="ui action input">
+                <input type="text" placeholder="Buscar..." id="inputSearch">
+                <button class="ui icon button" id="button-search">
+                  <i class="search icon"></i>
+                </button>
+            </div>
+        </div>
     </section>
 
     <section class="genre-container">
