@@ -168,7 +168,7 @@ window.addEventListener('load', ()=>{
     const showModal = (data) => {
         data.forEach(movie => {
             document.getElementById(movie.id).addEventListener('click', ()=>{
-                $(`#modal${movie.id}`).modal('show')
+                $(`#modal${movie.id}`).modal('show');
             })
 
             let acuModal = ``;
@@ -202,7 +202,7 @@ window.addEventListener('load', ()=>{
                         </div>
                         <div class="description">
                             <div class="title-modal">
-                                <h1 class="header">${movieId.title}</h1>
+                                <h1 class="header title-modal__header">${movieId.title}</h1>
                                 <div class="ui black tag label">${dataYear}</div>
                             </div>
                             <div class="ui horizontal label ${getColor(movieId.vote_average)}">
