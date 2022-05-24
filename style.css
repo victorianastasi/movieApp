@@ -57,10 +57,8 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
-.menu-mobile div{
-    display: block;
-}
 .search-container{
+    display: block;
     width: 150px;
 }
 .ui.input{
@@ -198,6 +196,7 @@ body{
     margin-right: 0.78571429rem;
 }
 .genre-container-dropdown{
+    display: block;
     text-align: center;
     margin: 0 ;
     width: 150px;
